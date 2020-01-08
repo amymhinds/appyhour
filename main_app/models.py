@@ -4,20 +4,28 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 SEX = (
-    ('P','Prefer not to say'),
+    ('P', 'Prefer not to say'),
     ('F', 'Female'),
     ('M', 'Male'),
-    ('NB','Non-Binary')  
+    ('NB', 'Non-Binary')
 )
 
-INTERESTS = (
-    ('1','Anything that eats'),
-    ('2','Men'),
-    ('3','Women'),
-    ('4','Men and Women'),
-    ('5','Non-Binary')
+ORIENTATION = (
+    ('1', 'Anything that eats'),
+    ('2', 'Men'),
+    ('3', 'Women'),
+    ('4', 'Men and Women'),
+    ('5', 'Non-Binary')
+)
+
+TASTE = (
+    ('1', 'Sweet'),
+    ('2', 'Savory'),
+    ('3', 'Both')
 )
 # Create your models here.
+
+
 class Eater(models.Model):
     name = models.CharField(max_length=25)
     sex = models.CharField(
@@ -28,8 +36,16 @@ class Eater(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     interestedIn = models.CharField(
         max_length=18,
-        choices=INTERESTS,
-        default=INTERESTS[0]
+        choices=ORIENTATION,
+        default=ORIENTATION[0]
     )
+    age = models.CharField(max_length=2, default=18)
 
-    
+
+class FoodInterests(models.Model):
+    favCuisine = models.CharField(max_length=35)
+    taste = models.CharField(
+        max_length=6,
+        choices=TASTE,
+        default=TASTE[2]
+    )
