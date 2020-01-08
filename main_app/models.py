@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 SEX = (
     ('P', 'Prefer not to say'),
@@ -39,7 +40,8 @@ class Eater(models.Model):
         choices=ORIENTATION,
         default=ORIENTATION[0]
     )
-    age = models.CharField(max_length=2, default=18)
+    age = models.PositiveIntegerField(
+        validators=[MinValueValidator(18), MaxValueValidator(99)])
 
 
 class FoodInterests(models.Model):
