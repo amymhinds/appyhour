@@ -50,7 +50,7 @@ class Eater(models.Model):
     least_fav_cuisine = models.CharField(max_length=35, null=True, blank=True)
 
 
-class Reviews(models.Model):
+class Review(models.Model):
     title = models.CharField(max_length=25, null=True, blank=True)
     about_my_date = models.TextField(blank=True, null=True)
     stars = models.PositiveIntegerField(
