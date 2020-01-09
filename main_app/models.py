@@ -24,6 +24,12 @@ TASTE = (
     ('2', 'Savory'),
     ('3', 'Both')
 )
+
+FOOD = (
+    ('A', 'American'),
+    ('B', 'Breakfast'),
+
+)
 # Create your models here.
 
 
@@ -45,7 +51,9 @@ class Eater(models.Model):
 
 
 class FoodInterests(models.Model):
-    favCuisine = models.CharField(max_length=35)
+    topFavCuisine = models.CharField(max_length=35, null=True, blank=True)
+    secFavCuisine = models.CharField(max_length=35, null=True, blank=True)
+    thirdFavCuisine = models.CharField(max_length=35, null=True, blank=True)
     taste = models.CharField(
         max_length=6,
         choices=TASTE,
