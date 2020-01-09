@@ -54,6 +54,7 @@ class FoodInterests(models.Model):
     topFavCuisine = models.CharField(max_length=35, null=True, blank=True)
     secFavCuisine = models.CharField(max_length=35, null=True, blank=True)
     thirdFavCuisine = models.CharField(max_length=35, null=True, blank=True)
+    leastFavCuisine = models.CharField(max_length=35, null=True, blank=True)
     taste = models.CharField(
         max_length=6,
         choices=TASTE,
